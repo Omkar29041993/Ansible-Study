@@ -1,0 +1,13 @@
+- name: Install flask dependancies
+    pip: name={{item}} state=present
+    with_items:
+      - flask
+      - flask-mysql
+
+- name: Copy source code
+    become: yes
+    copy: src=app.py dest=app.py
+
+- name: Start web server
+    become: yes
+    shell: FLASK_APP=app.py nohup flask run --host=0.0.0.0 &
