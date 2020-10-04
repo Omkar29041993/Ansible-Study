@@ -1,14 +1,10 @@
-- name: Deploy Web Application
-  tasks:
-    - name: Install python dependancies
-      apt: name={{item}} state=present
-      become: yes
-      with_items:
-        - python
-        - python-setuptools
-        - python-dev
-        - build-essential
-        - python-pip
-        - python-mysqldb
-    - include: tasks/db-deploy.yml
-    - include: tasks/web-deploy.yml
+apt: "name={{item}} state=present"
+become: true
+name: "Install python dependancies"
+with_items: 
+  - python
+  - python-setuptools
+  - python-dev
+  - build-essential
+  - python-pip
+  - python-mysqldb
