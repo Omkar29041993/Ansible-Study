@@ -1,6 +1,5 @@
 - name: Deploy web application
   hosts: servers
   roles:
-    - python-initial-setup
     - mysql-setup
     - python-setup
