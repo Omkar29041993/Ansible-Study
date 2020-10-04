@@ -1,5 +1,7 @@
 - name: Deploy Web Application
   hosts: servers
+  vars_files:
+    - "group_vars/db_webservers.yml"
   tasks:
     - name: Install python dependancies
       apt: name={{item}} state=present
